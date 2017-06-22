@@ -1,0 +1,13 @@
+name: whitedb
+version: 0.1.0
+
+authors:
+  - Mircea Ilie Ploscaru <tzekid2010@gmail.com>
+
+targets:
+  whitedb:
+    main: src/whitedb.cr
+
+crystal: 0.22.0
+
+license: MIT
