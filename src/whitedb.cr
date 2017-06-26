@@ -32,7 +32,9 @@ while rec
 end
 
 ## Full query interface
-arglist = [] of WhiteDB::QueryArg
+arglist = WhiteDB::QueryArg.new
+arglist = Slice(WhiteDB::QueryArg).new(2, arglist) # Doc. this behaviour
+
 arglist[0].column = 7
 arglist[0].cond = WhiteDB::COND::EQUAL
 arglist[0].value = WhiteDB.encode_query_param_int(db, 443)
