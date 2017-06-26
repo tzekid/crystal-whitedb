@@ -1,10 +1,7 @@
 require "./whitedb/*"
 
-#> Examples taken from: https://whitebd.org/tutorial
+#> Examples taken from: https://whitebd.org/tutorial Chap1-6
 
-# db : Void*
-# rec : Void*; rec2 : Void*
-# enc : Void*; enc2 : Void*
 
 # Connecting to the database
 db = WhiteDB.attach_database "dbname", 200_000
@@ -44,7 +41,7 @@ arglist[1].cond = WhiteDB::COND::EQUAL
 arglist[1].value = WhiteDB.encode_query_param_null(db, nil)
 
 # -> "field 7 equals 443 and field 6 equals NULL"
-query = WhiteDB.make_query(db, nil, 0, arglist, 2) #< arglist should be a pointer (of queryargs)
+query = WhiteDB.make_query(db, nil, 0, arglist, 2)
 
 while rec = WhiteDB.fetch(db, query)
   puts "Found a record where field 7 is 443 and field 6 is NULL"
@@ -54,6 +51,9 @@ end
 WhiteDB.free_query(db, query)
 WhiteDB.free_query_param(db, arglist[0].value)
 WhiteDB.free_query_param(db, arglist[1].value)
+
+WhiteDB.print_db(db)
+WhiteDB.detach_database(db)
 
 print "Press enter to continue..."; gets
 WhiteDB.delete_database("dbname")

@@ -12,6 +12,7 @@ lib WhiteDB
 
   alias String = LibC::Char*
 
+  ILLEGAL = 255 #> encoding error. -1 for decoding errors
 
   fun attach_database = wg_attach_database(dbasename : String, size : Int) : Void*
   fun attach_exisitng_database = wg_attach_exisitng_database(String) : Void*
@@ -36,11 +37,11 @@ lib WhiteDB
   
   fun get_record_len = wg_get_record_len(Void*, Void*) : Int
   
-  fun set_field = wg_set_field(db : Void*, record_ : Void*, fieldnr : Int, data : Int) : Int
+  fun set_field = wg_set_field(db : Void*, record : Void*, fieldnr : Int, data : Int) : Int
   fun set_new_field = wg_set_new_field(Void*, Void*, Int, Int) : Int
   
-  fun get_field = wg_get_field(Void*, Void*, Int) : Int
-  fun get_field_type = wg_get_field_type(Void*, Void*, Int) : Int
+  fun get_field = wg_get_field(db : Void*, record : Void*, fieldnr : Int) : Int
+  fun get_field_type = wg_get_field_type(db : Void*, record : Void*, fieldnr : Int) : Int
   
   fun set_int_field = wg_set_int_field(Void*, Void*, Int, Int) : Int
   fun set_double_field = wg_set_double_field(Void*, Void*, Int, Double) : Int
@@ -49,19 +50,20 @@ lib WhiteDB
   fun field_arr = wg_field_arr(Void*, Void*, Int) : Int
 
 
-  enum Types
-    WG_NULLTYPE = 1
-    WG_RECORDTYPE
-    WG_INTTYPE
-    WG_DOUBLETYPE
-    WG_STRTYPE
-    WG_XMLLITERALTYPE
-    WG_URITYPE
-    WG_BLOBTYPE
-    WG_CHARTYPE
-    WG_FIXPOINTTYPE
-    WG_DATETYPE
-    WG_TIMETYPE
+# replaces e.g WG_STRTYPE
+  enum TYPE
+    NULL = 1
+    RECORD
+    INT
+    DOUBLE
+    STR
+    XMLLITERAL
+    URI
+    BLOB
+    CHAR
+    FIXPOINT
+    DATE
+    TIME
   end
 
 
@@ -108,7 +110,7 @@ lib WhiteDB
 
   fun encode_str = wg_encode_str(db : Void*, str : String, lang : String) : Int
 
-  fun decode_str = wg_decode_str(Void*, Int) : String
+  fun decode_str = wg_decode_str(db : Void*, fieldnr : Int) : String
   fun decode_str_lang = wg_decode_str_lang(Void*, Int) : String
 
   fun decode_str_len = wg_decode_str_len(Void*, Int) : Int
@@ -165,12 +167,12 @@ lib WhiteDB
   fun add_int_atomic_field = wg_add_int_atomic_field(Void*, Void*, Int, Int) : Int
   
 
-  fun parse_json_file = wg_parse_json_file(Void*, Char) : Int
-  fun parse_json_document = wg_parse_json_document(Void*, String, Void**) : Int
-  fun parse_json_fragment = wg_parse_json_fragment(Void*, String, Void**) : Int
+  fun parse_json_file = wg_parse_json_file(db : Void*, filename : String) : Int
+  fun parse_json_document = wg_parse_json_document(db : Void*, buf : String, document : Void**) : Int
+  fun parse_json_fragment = wg_parse_json_fragment(db : Void*, buf : String, document : Void**) : Int
   
-  fun print_db = wg_print_db(Void*) : Void
-  fun print_record = wg_print_record(Void*, Int*) : Void
+  fun print_db = wg_print_db(db : Void*) : Void
+  fun print_record = wg_print_record(dg : Void*, rec : Int*) : Void
   fun snprint_value = wg_snprint_value(Void*, Int*) : Void
   fun parse_and_encode = wg_parse_and_encode(Void*, String) : Void
 
