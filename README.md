@@ -1,43 +1,49 @@
 # whitedb
 
-TODO:
-- [ ] Write a description here
+Crystal Bindings for WhiteDB
+
+<!--TODO:-->
+<!--- [ ] Write a description here-->
 <!--- [ ]  -->
 
 ## Installation
 
-TODO: [/] Write installation instructions here
+<!--TODO: [/] Write installation instructions here-->
 
 ### Install WhiteDB locally ( see [the official introduction](http://whitedb.org/tutorial.html#_introduction) )
-><b>TL:DR</b>  
-Arch Linux: ``` # pacman -S whitedb ```  
-Ubuntu: ``` # apt-get install ??? ```  
-macOS:  ``` # brew install ??? ```  
-Windows:   ``` ??? ```  
+| OS   |      TL:DR      |  
+|----------|--------------:|  
+| Arch Linux   |   ```# pacman -S whitedb ``` |  
+| Ubuntu   |    ```# apt-get install whitedb ``` |  
+| macOS   |   ```# brew install whitedb ``` |  
+| Windows   |   check [the original guide](http://whitedb.org/tutorial.html#_so_you_8217_re_on_windows) |  
 
 ### Add whitedb to your deps,
 ```yaml
 # shards.yml
-...
+# ...
 dependencies:
-  ...
   whitedb:
     github: tzekid/crystal-whitedb
 ``` 
-and then just ``` $ crystal deps ```
+### and then just ``` $ crystal deps ```
 
 ## Usage
 
-TODO:
-- [ ] Write usage instructions here
-- [ ] tl:dr the official examples ?
-- [ ] JSON example ?
-- [ ] 'real world' usage | example ?  
+```bash
+# dick
+```
+
+<!--TODO:-->
+<!--- [ ] Write usage instructions here-->
+<!--- [ ] tl:dr the official examples ?-->
+<!--- [ ] JSON example ?-->
+<!--- [ ] 'real world' usage | example ?  -->
 
 ## Development
 
-TODO:
-- [ ] Write development instructions here. (wud ?)
+TODO:  
+- [ ] Write development instructions here.
 
 ## Contributing
 
