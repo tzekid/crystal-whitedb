@@ -30,10 +30,6 @@ dependencies:
 
 ## Usage
 
-```bash
-# dick
-```
-
 <!--TODO:-->
 <!--- [ ] Write usage instructions here-->
 <!--- [ ] tl:dr the official examples ?-->
