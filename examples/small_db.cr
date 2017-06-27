@@ -34,8 +34,8 @@ if lastrec
   end
 end
 
+WhiteDB.print_db(db)
 WhiteDB.detach_database(db)
 
 print "Press enter to continue..."; gets
-
 WhiteDB.delete_database("1000")

@@ -157,10 +157,10 @@ lib WhiteDB
   fun replay_log = wg_replay_log(Void*) : Int
 
 
-  fun start_write = wg_start_write(Void*) : Int # Start write transaction
-  fun end_write = wg_end_write(Void*) : Int # End write transaction
-  fun start_read = wg_start_read(Void*, Int) : Int # Start read transaction
-  fun end_read = wg_end_read(Void*, Int) : Int # End read transaction
+  fun start_write = wg_start_write(dbase : Void*) : Int # Start write transaction
+  fun end_write = wg_end_write(dbase : Void*, lock : Int) : Int # End write transaction
+  fun start_read = wg_start_read(dbase : Void*) : Int # Start read transaction
+  fun end_read = wg_end_read(dbase : Void*, lock : Int) : Int # End read transaction
   
   fun update_atomic_field = wg_update_atomic_field(Void*, Void*, Int, Int, Int) : Int
   fun set_atomic_field = wg_set_atomic_field(Void*, Void*, Int, Int) : Int
